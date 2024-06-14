@@ -1,4 +1,4 @@
-
+import LoginLayout from "./pages/LoginLayout"
 
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-     
+     <LoginLayout/>
     </>
   )
 }
