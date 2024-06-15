@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/SideBar";
+import { useSelector } from "react-redux";
 function Dashboard() {
-
-
+    const Data=useSelector((state)=>state.account.data)
+    console.log(Data)
     return (
         <div className="flex h-screen bg-gray-100">
            

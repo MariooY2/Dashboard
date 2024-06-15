@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Sign from "../Backend/SupaSignup";
 import { useDispatch } from "react-redux";
 import { toggleauthenticated } from "../store/account";
+import { savedata,cleardata } from "../store/account";
 function Signup() {
   const dispatch=useDispatch();
   const [alreadyExist, setAlreadyExist] = useState(false);
@@ -33,12 +34,14 @@ function Signup() {
     }
     setpasslength(false)
     try {
-      await Sign({ fullname, email, password: pass });
+      const data=await Sign({ fullname, email, password: pass });
+      dispatch(savedata(data))
       dispatch(toggleauthenticated(true))
       navigate('/dashboard')
       console.log("Signup successful");
       setAlreadyExist(false);
     } catch (error) {
+      dispatch(cleardata())
       dispatch(toggleauthenticated(false))
       if (error.message === "User already registered") {
         setAlreadyExist(true);

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleauthenticated } from "../store/account";
+import { savedata,cleardata } from "../store/account";
 function Login() {
   const dispatch=useDispatch();
   const [email, setemail] = useState("");
@@ -20,10 +21,12 @@ function Login() {
     if (!email || !pass) return;
 
     try {
-      await Sign({ email, password: pass });
+      const data=await Sign({ email, password: pass });
+      dispatch(savedata(data))
       dispatch(toggleauthenticated(true))
       navigate('/dashboard')
     } catch (error) {
+      dispatch(cleardata())
       dispatch(toggleauthenticated(false))
       setErrorMessage(error.message);
     }
