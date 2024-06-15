@@ -10,7 +10,7 @@ function SignupLayout() {
         </div>
         <div className=" w-full h-full sm:w-2/5 sm:h-1/2 flex items-center justify-center pb-10">
           <img
-            src="../public/signup.png"
+            src="./images/signup.png"
             alt="signin"
             className="w-full h-full"
           />

@@ -11,7 +11,7 @@ function LoginLayout() {
         </div>
         <div className=" w-full h-full sm:w-2/5 sm:h-1/2 flex items-center justify-center pb-10">
           <img
-            src="../public/draw2.webp"
+            src="./images/draw2.webp"
             alt="signin"
             className="w-full h-full"
           />
