@@ -1,8 +1,22 @@
-# React + Vite
+# Dashboard Project
+<br>
+This is a dashboard application that provides user authentication, navigation through various sections like Home, Profile, and Settings, and a protected route mechanism to ensure only authenticated users can access specific areas of the app.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br>
 
-Currently, two official plugins are available:
+## Technologies Used
+- React: A JavaScript library for building user interfaces.
+- React Router: For client-side routing and navigation.
+- Redux Toolkit: For state management.
+- Supabase: For authentication and database management.
+- Tailwind CSS: For styling the application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- User authentication with Supabase
+- Protected routes to ensure only authenticated users can access specific areas
+- Dynamic navigation with active link styling
+- Responsive design with Tailwind CSS
+
+## Live-Demo
+https://dashboard-ochre-three.vercel.app/
+
