@@ -1,40 +1,13 @@
-import { useDispatch,useSelector } from "react-redux";
-import { toggleauthenticated } from "../store/account";
-import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import SideBar from "../components/SideBar";
 function Dashboard() {
-    const dispatch=useDispatch();
-    const isAuthenticated = useSelector((state) => state.account.authenticated);
-    console.log(isAuthenticated)
-    const Navigate=useNavigate();
-    function handleLogout(){
-        Navigate('/')
-    dispatch(toggleauthenticated(true))
-    console.log(isAuthenticated)
-    }
+
 
     return (
         <div className="flex h-screen bg-gray-100">
-            {/* Sidebar */}
-            <div className="w-64 bg-white shadow-lg">
-                <div className="h-16 flex items-center justify-center font-bold text-2xl">
-                    Dashboard
-                </div>
-                <nav className="mt-10">
-                    <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
-                        Home
-                    </a>
-                    <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
-                        Profile
-                    </a>
-                    <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
-                        Settings
-                    </a>
-                    <a onClick={handleLogout}className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
-                        Logout
-                    </a>
-                </nav>
-            </div>
-            {/* Main Content */}
+           
+          <SideBar/>
+           
             <div className="flex-1 flex flex-col">
                 {/* Header */}
                 <header className="flex items-center justify-between h-16 bg-white shadow px-4">
@@ -47,8 +20,7 @@ function Dashboard() {
                         />
                         <svg
                             className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"          
                             viewBox="0 0 20 20"
                         >
                             <path
@@ -60,24 +32,7 @@ function Dashboard() {
                     </div>
                 </header>
                 {/* Main */}
-                <main className="flex-1 p-6 bg-gray-100 overflow-y-auto">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Example Card */}
-                        <div className="bg-white p-4 rounded-lg shadow-lg">
-                            <h2 className="font-bold text-lg mb-2">Card Title</h2>
-                            <p className="text-gray-700">Card content goes here. This is a placeholder text.</p>
-                        </div>
-                        <div className="bg-white p-4 rounded-lg shadow-lg">
-                            <h2 className="font-bold text-lg mb-2">Card Title</h2>
-                            <p className="text-gray-700">Card content goes here. This is a placeholder text.</p>
-                        </div>
-                        <div className="bg-white p-4 rounded-lg shadow-lg">
-                            <h2 className="font-bold text-lg mb-2">Card Title</h2>
-                            <p className="text-gray-700">Card content goes here. This is a placeholder text.</p>
-                        </div>
-                        {/* Add more cards as needed */}
-                    </div>
-                </main>
+                <Outlet/>
             </div>
         </div>
     );

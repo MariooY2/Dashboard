@@ -8,11 +8,15 @@ function Signup() {
   const dispatch=useDispatch();
   const [alreadyExist, setAlreadyExist] = useState(false);
   const [passlength,setpasslength]=useState(false)
+  const [email, setemail] = useState("");
+  const [pass, setpass] = useState("");
+  const [fullname, setfullname] = useState("");
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
     navigate("/signin");
   };
+
   const isPasswordValid = (password) => {
     setpasslength(true)
     return password.length >= 6;
@@ -29,7 +33,7 @@ function Signup() {
     }
     setpasslength(false)
     try {
-      await Sign({ email, password: pass });
+      await Sign({ fullname, email, password: pass });
       dispatch(toggleauthenticated(true))
       navigate('/dashboard')
       console.log("Signup successful");
@@ -42,14 +46,28 @@ function Signup() {
       console.error("Signup error:", error.message);
     }
   }
-  const [email, setemail] = useState("");
-  const [pass, setpass] = useState("");
+
   return (
     <div className="flex items-center justify-center w-full h-full p-10">
       <div className="main bg-white rounded-lg shadow-md p-12 transition-transform w-[400px] text-center">
         <h1 className="text-sky-600 text-3xl">Welcome</h1>
         <h3 className="text-lg">Enter your signup credentials</h3>
         <Form onSubmit={submit}>
+        <label
+            htmlFor="Fullname"
+            className="block mt-4 mb-2 text-left text-gray-700 font-bold"
+          >
+            Full Name:
+          </label>
+          <input
+            onChange={(e) => setfullname(e.target.value)}
+            type="text"
+            id="Fullname"
+            name="Fullname"
+            placeholder="Enter your Full Name"
+            className="block w-full mb-6 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-sky-400"
+            required
+          />
           <label
             htmlFor="email"
             className="block mt-4 mb-2 text-left text-gray-700 font-bold"

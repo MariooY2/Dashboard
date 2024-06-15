@@ -1,7 +1,7 @@
 import supabase from "./supabase";
 import { useDispatch } from "react-redux";
 
-async function Sign({ email, password }) {
+async function Sign({ fullname,email, password }) {
   console.log(email);
   console.log(password);
   const { data, error } = await supabase.auth.signUp({
@@ -9,7 +9,7 @@ async function Sign({ email, password }) {
     password: password,
     options: {
       data: {
-        FullName: "Mario",
+        FullName: fullname,
         avatar: "",
       },
     },
