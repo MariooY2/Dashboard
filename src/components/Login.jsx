@@ -21,9 +21,10 @@ function Login() {
 
     try {
       await Sign({ email, password: pass });
-      dispatch(toggleauthenticated())
+      dispatch(toggleauthenticated(true))
       navigate('/dashboard')
     } catch (error) {
+      dispatch(toggleauthenticated(false))
       setErrorMessage(error.message);
     }
   };

@@ -30,11 +30,12 @@ function Signup() {
     setpasslength(false)
     try {
       await Sign({ email, password: pass });
-      dispatch(toggleauthenticated())
+      dispatch(toggleauthenticated(true))
       navigate('/dashboard')
       console.log("Signup successful");
       setAlreadyExist(false);
     } catch (error) {
+      dispatch(toggleauthenticated(false))
       if (error.message === "User already registered") {
         setAlreadyExist(true);
       }

@@ -1,6 +1,17 @@
-
-
+import { useDispatch,useSelector } from "react-redux";
+import { toggleauthenticated } from "../store/account";
+import { useNavigate } from "react-router-dom";
 function Dashboard() {
+    const dispatch=useDispatch();
+    const isAuthenticated = useSelector((state) => state.account.authenticated);
+    console.log(isAuthenticated)
+    const Navigate=useNavigate();
+    function handleLogout(){
+        Navigate('/')
+    dispatch(toggleauthenticated(true))
+    console.log(isAuthenticated)
+    }
+
     return (
         <div className="flex h-screen bg-gray-100">
             {/* Sidebar */}
@@ -18,7 +29,7 @@ function Dashboard() {
                     <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
                         Settings
                     </a>
-                    <a className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
+                    <a onClick={handleLogout}className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200" href="#">
                         Logout
                     </a>
                 </nav>

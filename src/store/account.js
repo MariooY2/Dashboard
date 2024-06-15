@@ -7,8 +7,8 @@ const AccountSlice = createSlice({
   name: "account",
   initialState: initial,
   reducers: {
-    toggleauthenticated(state) {
-      state.authenticated = !state.authenticated;
+    toggleauthenticated(state,action) {
+      state.authenticated = action.payload;
     },
   },
 });
