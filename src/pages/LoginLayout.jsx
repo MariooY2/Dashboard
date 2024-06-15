@@ -1,5 +1,6 @@
 import Login from "../components/Login";
 import { useSelector } from "react-redux";
+import image from "../images/draw2.webp"
 function LoginLayout() {
 
 
@@ -11,7 +12,7 @@ function LoginLayout() {
         </div>
         <div className=" w-full h-full sm:w-2/5 sm:h-1/2 flex items-center justify-center pb-10">
           <img
-            src="./images/draw2.webp"
+            src={image}
             alt="signin"
             className="w-full h-full"
           />

@@ -5,6 +5,7 @@ import Sign from "../Backend/SupaSignup";
 import { useDispatch } from "react-redux";
 import { toggleauthenticated } from "../store/account";
 import { savedata,cleardata } from "../store/account";
+
 function Signup() {
   const dispatch=useDispatch();
   const [alreadyExist, setAlreadyExist] = useState(false);

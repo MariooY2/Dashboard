@@ -1,5 +1,5 @@
 import Signup from "../components/Signup"
-
+import image from "../images/signup.png"
 function SignupLayout() {
     return (
         <div className="h-full sm:h-screen bg-sky-200 ">
@@ -10,7 +10,7 @@ function SignupLayout() {
         </div>
         <div className=" w-full h-full sm:w-2/5 sm:h-1/2 flex items-center justify-center pb-10">
           <img
-            src="./images/signup.png"
+            src={image}
             alt="signin"
             className="w-full h-full"
           />
