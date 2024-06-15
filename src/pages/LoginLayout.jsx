@@ -2,8 +2,7 @@ import Login from "../components/Login";
 import { useSelector } from "react-redux";
 function LoginLayout() {
 
-  const answer=useSelector((answer)=>answer.switch.selected)
-  console.log(answer)
+
   return (
     <div className="h-full sm:h-screen bg-sky-200 ">
       <div className="flex flex-wrap h-full w-full justify-center items-center">

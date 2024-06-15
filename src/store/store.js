@@ -1,10 +1,10 @@
-import FlipReducer from "./Flip"
+import accountReducer from "./account"
 import { configureStore } from "@reduxjs/toolkit"
 
 
 const store=configureStore({
     reducer:{
-        switch:FlipReducer,
+        account:accountReducer,
     }
 })
 export default store;

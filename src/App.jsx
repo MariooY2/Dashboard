@@ -1,6 +1,9 @@
 import LoginLayout from "./pages/LoginLayout"
 import SignupLayout from "./pages/SignupLayout"
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from './components/ProtectedRoute';
+import supabase from "./Backend/supabase";
+import loadingdata from "./Backend/loadingdata"
 import { RouterProvider, createBrowserRouter , Navigate} from "react-router-dom";
 function App() {
 
@@ -15,7 +18,7 @@ const router =createBrowserRouter([
     path:"/signup",
     element:<SignupLayout/>
   },{
-    path:"/Dashboard",element:<Dashboard/>
+    path:"/Dashboard", element: <ProtectedRoute element={<Dashboard />} />
   }
 ])
   return (
