@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initial = {
-  alreadyexist: false,
   authenticated: false,
 };
 const AccountSlice = createSlice({
@@ -9,7 +8,7 @@ const AccountSlice = createSlice({
   initialState: initial,
   reducers: {
     toggleauthenticated(state) {
-      state.selected = !state.selected;
+      state.authenticated = !state.authenticated;
     },
   },
 });

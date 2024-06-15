@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Form } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Sign from "../Backend/SupaSignup";
+import { useDispatch } from "react-redux";
+import { toggleauthenticated } from "../store/account";
 function Signup() {
+  const dispatch=useDispatch();
   const [alreadyExist, setAlreadyExist] = useState(false);
   const [passlength,setpasslength]=useState(false)
   const navigate = useNavigate();
@@ -27,7 +30,8 @@ function Signup() {
     setpasslength(false)
     try {
       await Sign({ email, password: pass });
-      // Handle successful signup, e.g., navigate to a different page or show a success message
+      dispatch(toggleauthenticated())
+      navigate('/dashboard')
       console.log("Signup successful");
       setAlreadyExist(false);
     } catch (error) {
