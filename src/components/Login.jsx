@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toggleauthenticated } from "../store/account";
-import { savedata,cleardata } from "../store/account";
+import { savedata, cleardata } from "../store/account";
 function Login() {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,13 +21,13 @@ function Login() {
     if (!email || !pass) return;
 
     try {
-      const data=await Sign({ email, password: pass });
-      dispatch(savedata(data))
-      dispatch(toggleauthenticated(true))
-      navigate('/dashboard')
+      const data = await Sign({ email, password: pass });
+      dispatch(savedata(data));
+      dispatch(toggleauthenticated(true));
+      navigate("/dashboard");
     } catch (error) {
-      dispatch(cleardata())
-      dispatch(toggleauthenticated(false))
+      dispatch(cleardata());
+      dispatch(toggleauthenticated(false));
       setErrorMessage(error.message);
     }
   };

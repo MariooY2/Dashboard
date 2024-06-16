@@ -1,9 +1,6 @@
 import supabase from "./supabase";
-import { useDispatch } from "react-redux";
-import { savedata,cleardata } from "../store/account";
 
-async function Sign({ fullname,email, password }) {
-  //const dispatch=useDispatch();
+async function Sign({ fullname, email, password }) {
   const { data, error } = await supabase.auth.signUp({
     email: email,
     password: password,
@@ -15,12 +12,10 @@ async function Sign({ fullname,email, password }) {
     },
   });
 
-
   if (error) {
-    //dispatch(cleardata())
     throw new Error(error.message);
   }
-  //dispatch(savedata(data))
+
   return data;
 }
 
