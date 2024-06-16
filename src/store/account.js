@@ -4,6 +4,7 @@ const initial = {
   authenticated: false,
   data: {},
   image: "123",
+  email: "",
 };
 const AccountSlice = createSlice({
   name: "account",
@@ -18,14 +19,16 @@ const AccountSlice = createSlice({
     cleardata(state) {
       state.data = {};
     },
-    setimage(state,action){
-      state.image=action.payload;
-    },deleteimage(state){
-      state.image=null
-    }
+    setimage(state, action) {
+      state.image = action.payload;
+    },
+    setemail(state, action) {
+      console.log(`${action.payload} egeg`)
+      state.email = action.payload;
+    },
   },
 });
 
-export const { toggleauthenticated, savedata, cleardata,setimage,deleteimage } =
+export const { toggleauthenticated, savedata, cleardata, setimage, setemail } =
   AccountSlice.actions;
 export default AccountSlice.reducer;

@@ -24,7 +24,7 @@ function DashboardProfile() {
     setPreview(URL.createObjectURL(selectedFile));
   };
 
-  const fetchImage = async () => {
+   const fetchImage = async () => {
     const imageData = await ReadImage(email);
 
     if (imageData === false) {

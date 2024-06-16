@@ -11,7 +11,7 @@ function SideBar() {
   }
 
   return (
-    <div className="w-64 bg-white shadow-lg">
+    <div className="w-56 bg-white shadow-lg">
       <div className="h-16 flex items-center justify-center font-bold text-2xl">
         Dashboard
       </div>
