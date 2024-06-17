@@ -11,16 +11,16 @@ function SideBar() {
   }
 
   return (
-    <div className="w-56 bg-white shadow-lg">
-      <div className="h-16 flex items-center justify-center font-bold text-2xl">
+    <div className="lg:w-[150px] w-[110px] bg-white shadow-lg">
+      <div className="lg:h-16 h-13 flex items-center justify-center font-bold lg:text-2xl text-xl mt-5">
         Dashboard
       </div>
       <div className=" flex flex-col items-center justify-center">
-        <nav className="mt-10 flex flex-col items-center justify-center gap-28">
+        <nav className="mt-10 flex flex-col items-center justify-center lg:gap-28 gap-12">
           <NavLink
             to="/dashboard/home"
             className={({ isActive }) =>
-              `block py-2.5 px-12 rounded  hover:bg-sky-200 ${
+              `block py-2.5 lg:px-12 px-9 rounded  hover:bg-sky-200 ${
                 isActive ? "bg-sky-300" : ""
               }`
             }
@@ -30,7 +30,7 @@ function SideBar() {
           <NavLink
             to="/dashboard/profile"
             className={({ isActive }) =>
-              `block py-2.5 px-12 rounded  hover:bg-sky-200 ${
+              `block py-2.5 lg:px-12 px-8 rounded  hover:bg-sky-200 ${
                 isActive ? "bg-sky-300" : ""
               }`
             }
@@ -40,7 +40,7 @@ function SideBar() {
           <NavLink
             to="/dashboard/settings"
             className={({ isActive }) =>
-              `block py-2.5 px-12 rounded  hover:bg-sky-200 ${
+              `block py-2.5 lg:px-12 px-7 rounded  hover:bg-sky-200 ${
                 isActive ? "bg-sky-300" : ""
               }`
             }
@@ -49,7 +49,7 @@ function SideBar() {
           </NavLink>
           <a
             onClick={handleLogout}
-            className="block py-2.5 px-12 rounded transition duration-200 hover:bg-red-800 cursor-pointer"
+            className="block py-2.5 lg:px-12 px-8 rounded transition duration-200 hover:bg-red-800 cursor-pointer"
           >
             Logout
           </a>

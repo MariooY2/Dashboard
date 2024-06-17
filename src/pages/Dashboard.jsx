@@ -4,21 +4,32 @@ import { useSelector } from "react-redux";
 import { ReadImage } from "../Backend/UploadImage";
 import { useDispatch } from "react-redux";
 import { setimage } from "../store/account";
+
+function calculateDaysFromCreation(dateString) {
+  const creationDate = new Date(dateString);
+  const today = new Date();
+  const timeDiff = today - creationDate;
+  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  return daysDiff;
+}
+
 function Dashboard() {
-    const dispatch=useDispatch()
-    const email=useSelector((state)=>state.account.email)
-    const fetchImage = async () => {
-        const imageData = await ReadImage(email);
-    
-        if (imageData === false) {
-          console.log("No picture");
-        } else {
-          dispatch(setimage(imageData));
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.account.email);
+  const createdAt = useSelector((state) => state.account.data.user.created_at);
 
-        }
-      };
-      fetchImage()
+  const daysSinceCreation = calculateDaysFromCreation(createdAt);
 
+  const fetchImage = async () => {
+    const imageData = await ReadImage(email);
+
+    if (imageData === false) {
+      console.log("No picture");
+    } else {
+      dispatch(setimage(imageData));
+    }
+  };
+  fetchImage();
 
   const Data = useSelector((state) => state.account.data.user);
   const FullName = Data.user_metadata.FullName;
@@ -30,23 +41,22 @@ function Dashboard() {
       <div className="flex-1 flex flex-col">
         {/* Header */}
         <header className="flex items-center justify-between h-24 bg-white shadow px-4">
-          <div className="font-bold text-lg">Welcome Back {FullName}</div>
-        
-           
-       
+          <div className="font-bold text-lg">Welcome Back {FullName} your account is {daysSinceCreation} {daysSinceCreation===1?'day':'days'} old</div>
+      
           <div className="relative flex items-center justify-center h-full">
-          <NavLink to="profile">
-            <img
-              src={pic}
-              alt="Profile"
-              className="w-20 h-20 rounded-full mr-5"
-            />
-          </NavLink>
-           
+            <NavLink to="profile">
+              <img
+                src={pic}
+                alt="Profile"
+                className="w-20 h-20 rounded-full mr-5"
+              />
+            </NavLink>
           </div>
         </header>
         {/* Main */}
-        <Outlet />
+        <div className="flex-1 overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

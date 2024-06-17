@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   UploadImage,
   ReadImage,
@@ -13,35 +13,37 @@ function DashboardProfile() {
   const uid = useSelector((state) => state.account.data.user.id);
   const email = useSelector((state) => state.account.data.user.email);
   const dispatch = useDispatch();
-  const name = file.name ? file.name : " ";
-  const link = `https://xmjkcphldqqnggvngfbz.supabase.co/storage/v1/object/public/test/${uid}/${name}`;
+  const [name, setname] = useState(" ");
   const [isimage, setisimage] = useState(false);
-
+  const link = `https://xmjkcphldqqnggvngfbz.supabase.co/storage/v1/object/public/test/${uid}/${name}`;
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-
+    setname(selectedFile.name);
     setPreview(URL.createObjectURL(selectedFile));
   };
 
-   const fetchImage = async () => {
-    const imageData = await ReadImage(email);
+  useEffect(() => {
+    const fetchImage = async () => {
+      const imageData = await ReadImage(email);
 
-    if (imageData === false) {
-      setisimage(false);
-      console.log("No picture");
-    } else {
-      dispatch(setimage(imageData));
-      setisimage(true);
-    }
-  };
-  fetchImage();
+      if (imageData === false) {
+        setisimage(false);
+        console.log("No picture");
+      } else {
+        setisimage(true);
+      }
+    };
+    fetchImage();
+  }, [email]);
 
   const handleUpload = async (e) => {
     e.preventDefault();
 
     if (file) {
       await UploadImage(file, uid);
+      setname(file.name);
+
       dispatch(setimage(link));
       if (!isimage) {
         AddImage(uid, link, email);
