@@ -10,6 +10,7 @@ function calculateDaysFromCreation(dateString) {
   const today = new Date();
   const timeDiff = today - creationDate;
   const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  if (daysDiff==-1) return 0
   return daysDiff;
 }
 
@@ -34,6 +35,7 @@ function Dashboard() {
   const Data = useSelector((state) => state.account.data.user);
   const FullName = Data.user_metadata.FullName;
   const pic = useSelector((state) => state.account.image);
+  const is= (pic==="123")
   return (
     <div className="flex h-screen bg-gray-100">
       <SideBar />
@@ -45,11 +47,16 @@ function Dashboard() {
       
           <div className="relative flex items-center justify-center h-full">
             <NavLink to="profile">
-              <img
+              {is?<img
+                src="https://xmjkcphldqqnggvngfbz.supabase.co/storage/v1/object/public/test/avatar1.avif"
+                alt="Avatar"
+                className="w-20 h-20 rounded-full mr-5"
+              />:<img
                 src={pic}
                 alt="Profile"
                 className="w-20 h-20 rounded-full mr-5"
-              />
+              />}
+              
             </NavLink>
           </div>
         </header>

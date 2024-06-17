@@ -63,7 +63,7 @@ function DashboardProfile() {
           <div className="w-32 h-32 rounded-full overflow-hidden border border-gray-300">
             {preview ? (
               <img
-                src={link}
+                src={preview}
                 alt="Profile Preview"
                 className="w-full h-full object-cover"
               />
