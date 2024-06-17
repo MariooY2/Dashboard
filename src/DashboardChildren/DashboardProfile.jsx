@@ -23,7 +23,7 @@ function DashboardProfile() {
     setPreview(URL.createObjectURL(selectedFile));
   };
 
-  useEffect(() => {
+ 
     const fetchImage = async () => {
       const imageData = await ReadImage(email);
 
@@ -35,7 +35,7 @@ function DashboardProfile() {
       }
     };
     fetchImage();
-  }, [email]);
+
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ function DashboardProfile() {
       setname(file.name);
 
       dispatch(setimage(link));
-      if (!isimage) {
+      if (isimage===false) {
         AddImage(uid, link, email);
       } else {
         updateProfileImage(email, link);
