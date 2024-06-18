@@ -23,7 +23,6 @@ const AccountSlice = createSlice({
       state.image = action.payload;
     },
     setemail(state, action) {
-      console.log(`${action.payload} egeg`)
       state.email = action.payload;
     },
   },
