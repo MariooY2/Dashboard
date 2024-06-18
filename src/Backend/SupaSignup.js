@@ -7,7 +7,7 @@ async function Sign({ fullname, email, password }) {
     options: {
       data: {
         FullName: fullname,
-        avatar: "",
+        
       },
     },
   });

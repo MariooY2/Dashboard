@@ -1,14 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleauthenticated } from "../store/account";
-import { cleardata,clearimage } from "../store/account";
+import { cleardata, clearimage } from "../store/account";
+import logoutUser from "../Backend/logout";
 function SideBar() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.account.authenticated);
-  function handleLogout() {
-    dispatch(cleardata())
-    dispatch(clearimage())
+  const image = useSelector((state) => state.account.image);
+  console.log(image)
+
+   function handleLogout() {
+    dispatch(cleardata());
+    dispatch(clearimage());
     dispatch(toggleauthenticated(false));
+    logoutUser();
     console.log(isAuthenticated);
   }
 
