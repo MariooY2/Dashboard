@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleauthenticated } from "../store/account";
-import { cleardata } from "../store/account";
+import { cleardata,clearimage } from "../store/account";
 function SideBar() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.account.authenticated);
   function handleLogout() {
     dispatch(cleardata())
+    dispatch(clearimage())
     dispatch(toggleauthenticated(false));
     console.log(isAuthenticated);
   }

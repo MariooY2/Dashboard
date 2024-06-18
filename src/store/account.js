@@ -21,6 +21,8 @@ const AccountSlice = createSlice({
     },
     setimage(state, action) {
       state.image = action.payload;
+    },clearimage(state){
+state.image="123  "
     },
     setemail(state, action) {
       state.email = action.payload;
@@ -28,6 +30,6 @@ const AccountSlice = createSlice({
   },
 });
 
-export const { toggleauthenticated, savedata, cleardata, setimage, setemail } =
+export const { toggleauthenticated, savedata, cleardata, setimage, setemail,clearimage } =
   AccountSlice.actions;
 export default AccountSlice.reducer;
